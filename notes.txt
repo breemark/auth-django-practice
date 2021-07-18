@@ -1,0 +1,10 @@
+22. Create a Registration page [Done]
+23. Create a Registration Form [Done]
+24. Add New Registration Form Fields [Done]
+25. Using Widgets on the Form Fields [...]
+26. Working with Labels and HelpText []
+
+
+
+# Notes
+You can put all the comments that you want.. thats what this is for...
