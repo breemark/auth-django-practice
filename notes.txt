@@ -3,8 +3,10 @@
 24. Add New Registration Form Fields [Done]
 25. Using Widgets on the Form Fields [...]
 26. Working with Labels and HelpText []
-
+27. 
 
 
 # Notes
-You can put all the comments that you want.. thats what this is for...
+* You can put all the comments that you want.. thats what this is for...
+* fav_color challenge
+* The PYTHON DEBUGGER WILL SAVE YOUR LIFE  import pdb; pdb.set_trace()

@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, FavColorForm
+from .models import Profile
 
 # Create your views here.
 def home(request):
@@ -29,18 +30,30 @@ def login_user(request):
 def register_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
+        form2 = FavColorForm(request.POST)
         if form.is_valid():
             form.save()
+
+            # Favorite Color Challenge 
+
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            user = authenticate(username=username, password=password) 
+
+            user = authenticate(username=username, password=password)
+            
+            user_profile = form2.save(commit=False)
+            user_profile.user = user
+            user_profile.save() 
+            form2.save_m2m()
+
             login(request, user)                                        # Built-up Django function to Login the User
             messages.success(request, ('You have been registered'))
             return redirect('home')
     else:
         form = SignUpForm()
+        form2 = FavColorForm()
         
-    context = {'form': form}
+    context = {'form': form, 'form2': form2,}
     return render(request, 'authenticate/register.html', context)
 
 
